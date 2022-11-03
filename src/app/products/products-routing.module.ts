@@ -11,9 +11,9 @@ const routes: Routes = [
     {path:'new', component: FormProductComponent},
     {path:'category/:category', component:ListProductComponent},
     {path:'outofstock', component: AdminProductComponent},
+    {path:'update/:id', component: FormProductComponent}
   ] },
-
-                    ];
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

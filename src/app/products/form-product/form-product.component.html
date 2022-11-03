@@ -3,7 +3,7 @@
   <div class="form-group col-md-6">
     <label>Title</label>
     <input type="text" [(ngModel)]="product.title" name="title"
-    class="form-control" required minlength="3" pattern="[a-zA-Z]{3,12}$"
+    class="form-control" required minlength="3" pattern="[a-z A-Z 1-9]{3,12}$"
      #t="ngModel">
     <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
         <div *ngIf="t.hasError('required')">this field is required</div>
