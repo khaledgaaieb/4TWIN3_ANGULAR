@@ -27,7 +27,7 @@ export class UserService {
       picture:'https://bootdey.com/img/Content/avatar/avatar3.png'
     },
     {
-      id: 2,
+      id: 3,
       name: 'William Swift',
       category: 'simple user',
       job: 'Backend Developer',

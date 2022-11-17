@@ -22,34 +22,43 @@ export class ListProductComponent implements OnInit {
     console.log(this.route);
     //let category= this.route.snapshot.params['category'];
     this.title= 'My App Store';
-    this.all=this.productService.listProduct;
-    this.route.params.subscribe(
-      (params)=>{
-        if(params['category']!=null){
-          this.list= this.all.filter((product)=>
-            product.category==params['category']
-           )
-        }else{
-          this.list= this.all
+    this.productService.getAllProduct().subscribe(
+      (data:Product[])=>{this.all = data;this.list=data
+      this.count=this.stats.getCount(this.all,'quantity',0)
+      this.route.params.subscribe(
+        (params)=>{
+          if(params['category']!=null){
+            this.list= this.all.filter((product)=>
+              product.category==params['category']
+             )
+          }else{
+            this.list= this.all
+          }
         }
-      }
-    )
-    this.count=this.stats.getCount(this.all,'quantity',0)
+      )}
+      
+    ); 
   }
 
   incrementLike(product: Product): void{
     let i= this.list.indexOf(product);
     if(i!=-1){
-      this.list[i].nbrLike++
+      //this.list[i].nbrLike++
       //connect to the backend side
+      product.nbrLike++;
+      this.productService.updateProduct(product).subscribe();
     }
   }
   buyProduct(product: Product): void{
     let i= this.list.indexOf(product);
     if(i!=-1){
-      this.list[i].quantity--
+      //this.list[i].quantity--
       //connect to the backend side
-      this.count=this.stats.getCount(this.all,'quantity',0)
+      product.quantity--
+      this.productService.updateProduct(product).subscribe(
+        ()=>{this.count=this.stats.getCount(this.all,'quantity',0)}
+      );
+      
     }
   }
 }
