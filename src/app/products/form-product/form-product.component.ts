@@ -35,18 +35,18 @@ export class FormProductComponent implements OnInit {
   saveProduct(){
     //this.product.nbrLike=0;
 
-    if(this.action == 'update'){
+    if(this.action == 'Update'){
       this.productService.updateProduct(this.product).subscribe(
         ()=>this.route.navigate(['product/list']),
         ()=>{console.log('error'),
         ()=>{console.log('complete')}}
-      )
+      );
     }else{
       this.productService.addProduct(this.product).subscribe(
         ()=>this.route.navigate(['product/list']),
         ()=>{console.log('error'),
         ()=>{console.log('complete')}}
-      )
+      );
       
     }
   }

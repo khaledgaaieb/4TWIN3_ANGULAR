@@ -9,6 +9,7 @@ import { FormUserComponent } from './form-user/form-user.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { TestComponent } from './test/test.component';
+import { UserService } from '../core/services/user.service';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { TestComponent } from './test/test.component';
     UsersRoutingModule,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers:[UserService]
 })
 export class UsersModule { }
